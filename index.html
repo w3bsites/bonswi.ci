@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BON SWVI - Produits Naturels de Côte d'Ivoire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519735771060-453c1a27a5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #f59e0b;
+            transition: width .3s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center mr-3">
+                    <i class="fas fa-leaf text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">BON SWVI</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Accueil</a>
+                <a href="#produits" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Nos Produits</a>
+                <a href="#apropos" class="nav-link text-gray-700 hover:text-amber-500 font-medium">À Propos</a>
+                <a href="#temoignages" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Témoignages</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Contact</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#accueil" class="text-gray-700 hover:text-amber-500 font-medium">Accueil</a>
+                <a href="#produits" class="text-gray-700 hover:text-amber-500 font-medium">Nos Produits</a>
+                <a href="#apropos" class="text-gray-700 hover:text-amber-500 font-medium">À Propos</a>
+                <a href="#temoignages" class="text-gray-700 hover:text-amber-500 font-medium">Témoignages</a>
+                <a href="#contact" class="text-gray-700 hover:text-amber-500 font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero min-h-screen flex items-center justify-center text-center text-white py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Découvrez les Trésors Naturels de Côte d'Ivoire</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Des produits 100% naturels, issus de notre terre généreuse, pour votre bien-être au quotidien.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#produits" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Nos Produits</a>
+                <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produits Section -->
+    <section id="produits" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nos Produits Naturels</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre sélection de produits naturels issus des richesses de la Côte d'Ivoire, cultivés et transformés avec soin.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Huile de palmiste" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Huile de Palmiste</h3>
+                            <span class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full">Nouveau</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Huile naturelle extraite à froid, riche en vitamines et acides gras essentiels pour la peau et les cheveux.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">5 000 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Poudre de Baobab" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Poudre de Baobab</h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Populaire</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Riche en vitamine C et antioxydants, idéale pour booster votre système immunitaire et votre énergie.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">7 500 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Beurre de Karité" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Beurre de Karité</h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Best-seller</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pur et non raffiné, excellent pour hydrater la peau, prévenir les vergetures et soigner les cheveux secs.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">6 000 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Miel Sauvage" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Miel Sauvage</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Miel 100% naturel récolté dans les forêts ivoiriennes, aux propriétés antibactériennes et cicatrisantes.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">8 000 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Gingembre en Poudre" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Gingembre en Poudre</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Stimulant naturel, aide à la digestion et renforce le système immunitaire. Idéal pour infusions et cuisine.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">4 500 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Noix de Kola" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Noix de Kola</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Stimulant naturel riche en caféine, traditionnellement utilisé pour ses propriétés énergisantes et médicinales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-600 font-bold text-xl">3 500 FCFA</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    Voir tous nos produits <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos Section -->
+    <section id="apropos" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <img src="https://images.unsplash.com/photo-1519735771060-453c1a27a5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="À propos de BON SWVI" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Notre Engagement pour la Nature</h2>
+                    <div class="w-20 h-1 bg-amber-500 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Fondée en 2015, BON SWVI s'engage à promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-leaf text-amber-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Produits 100% Naturels</h3>
+                                <p class="text-gray-600">Tous nos produits sont issus de l'agriculture biologique, sans additifs ni conservateurs chimiques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-hands-helping text-amber-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Commerce Équitable</h3>
+                                <p class="text-gray-600">Nous travaillons directement avec les producteurs locaux pour assurer des revenus justes et durables.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-recycle text-amber-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Emballages Écologiques</h3>
+                                <p class="text-gray-600">Nous utilisons des matériaux biodégradables ou recyclables pour minimiser notre impact environnemental.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section id="temoignages" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Ce Que Disent Nos Clients</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez les expériences de ceux qui ont déjà essayé nos produits naturels.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Aïcha K.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Le beurre de karité de BON SWVI a complètement transformé ma routine capillaire. Mes cheveux sont plus forts et plus brillants que jamais. Je recommande vivement!"</p>
+                </div>
+                
+                <!-- Témoignage 2 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Jean-Paul D.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"La poudre de baobab est devenue un indispensable de mon petit-déjeuner. Un vrai boost d'énergie naturelle pour bien commencer la journée. Qualité exceptionnelle!"</p>
+                </div>
+                
+                <!-- Témoignage 3 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Fatou B.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"J'ai essayé plusieurs produits BON SWVI et je suis impressionnée par leur qualité. Le service client est également très réactif et professionnel. Je suis une cliente fidèle!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactez-Nous</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto opacity-90">Nous sommes à votre disposition pour répondre à toutes vos questions sur nos produits naturels.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 font-medium">Votre Nom</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block mb-2 font-medium">Votre Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Sujet</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Votre Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full md:w-auto">
+                            Envoyer le Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-10">
+                    <div class="bg-gray-700 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6">Informations de Contact</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-map-marker-alt text-amber-500 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Adresse</h4>
+                                    <p class="text-gray-300">Rue des Commerçants, Abidjan<br>Côte d'Ivoire</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-phone-alt text-amber-500 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Téléphone</h4>
+                                    <p class="text-gray-300">+225 05 94 76 64 41</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-envelope text-amber-500 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-300">contact@bonswvi.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-clock text-amber-500 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Heures d'Ouverture</h4>
+                                    <p class="text-gray-300">Lundi - Vendredi: 8h - 18h<br>Samedi: 9h - 14h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Suivez-Nous</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">BON SWVI</h3>
+                    </div>
+                    <p class="text-gray-400">Promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Liens Rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-gray-400 hover:text-amber-500 transition duration-300">Accueil</a></li>
+                        <li><a href="#produits" class="text-gray-400 hover:text-amber-500 transition duration-300">Nos Produits</a></li>
+                        <li><a href="#apropos" class="text-gray-400 hover:text-amber-500 transition duration-300">À Propos</a></li>
+                        <li><a href="#temoignages" class="text-gray-400 hover:text-amber-500 transition duration-300">Témoignages</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-500 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Produits</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Huile de Palmiste</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Beurre de Karité</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Poudre de Baobab</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Miel Sauvage</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Noix de Kola</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Abonnez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 BON SWVI. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
