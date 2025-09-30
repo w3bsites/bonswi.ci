@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BON SWVI - Produits Naturels de Côte d'Ivoire</title>
+    <title>Bonswi - Organic Products & Restaurant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        /* Les styles CSS existants restent identiques */
+        :root {
+            --primary-green: #2d5a27;
+            --secondary-beige: #f5f1e6;
+            --accent-gold: #d4af37;
+        }
         
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
         
+        .font-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+        
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519735771060-453c1a27a5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -39,8 +49,173 @@
             display: block;
             width: 0;
             height: 2px;
-            background: #f59e0b;
+            background: var(--primary-green);
             transition: width .3s;
+        }
+        
+        .language-switcher {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .language-switcher:hover .language-dropdown {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        
+        .language-option:hover {
+            background: #f5f5f5;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--primary-green);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+        
+        .menu-category {
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+        }
+        
+        .slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        
+        .slider-dot.active {
+            background: white;
         }
     </style>
 </head>
@@ -49,21 +224,59 @@
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center mr-3">
+                <div class="w-12 h-12 rounded-full bg-green-700 flex items-center justify-center mr-3">
                     <i class="fas fa-leaf text-white text-xl"></i>
                 </div>
-                <h1 class="text-2xl font-bold text-gray-800">BONSWI</h1>
+                <h1 class="text-2xl font-bold text-gray-800 font-elegant">Bonswi</h1>
             </div>
             
-            <nav class="hidden md:flex space-x-8">
-                <a href="#accueil" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Accueil</a>
-                <a href="#produits" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Nos Produits</a>
-                <a href="#apropos" class="nav-link text-gray-700 hover:text-amber-500 font-medium">À Propos</a>
-                <a href="#temoignages" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Témoignages</a>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-amber-500 font-medium">Contact</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#accueil" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.home">Accueil</a>
+                <a href="#produits" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.products">Produits</a>
+                <a href="#boutique" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.shop">Boutique</a>
+                <a href="#restaurant" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.restaurant">Restaurant</a>
+                <a href="#champ" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.farm">Champ Bio</a>
+                <a href="#avis" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.reviews">Avis Clients</a>
+                <a href="#apropos" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.about">À Propos</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-green-700 font-medium" data-key="nav.contact">Contact</a>
+                
+                <div class="language-switcher ml-4">
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-md bg-gray-100">
+                        <img src="https://flagcdn.com/w40/fr.png" width="20" alt="Français">
+                        <span class="font-medium">FR</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="language-dropdown">
+                        <div class="language-option" data-lang="fr">
+                            <img src="https://flagcdn.com/w40/fr.png" width="20" alt="Français">
+                            <span>Français</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w40/gb.png" width="20" alt="English">
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
             </nav>
             
-            <div class="md:hidden">
+            <div class="md:hidden flex items-center">
+                <div class="language-switcher mr-4">
+                    <div class="flex items-center gap-1 px-2 py-1 rounded-md bg-gray-100">
+                        <img src="https://flagcdn.com/w40/fr.png" width="16" alt="Français">
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="language-dropdown">
+                        <div class="language-option" data-lang="fr">
+                            <img src="https://flagcdn.com/w40/fr.png" width="20" alt="Français">
+                            <span>Français</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w40/gb.png" width="20" alt="English">
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <button id="menu-btn" class="text-gray-700 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
@@ -73,11 +286,14 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
             <div class="flex flex-col space-y-3">
-                <a href="#accueil" class="text-gray-700 hover:text-amber-500 font-medium">Accueil</a>
-                <a href="#produits" class="text-gray-700 hover:text-amber-500 font-medium">Nos Produits</a>
-                <a href="#apropos" class="text-gray-700 hover:text-amber-500 font-medium">À Propos</a>
-                <a href="#temoignages" class="text-gray-700 hover:text-amber-500 font-medium">Témoignages</a>
-                <a href="#contact" class="text-gray-700 hover:text-amber-500 font-medium">Contact</a>
+                <a href="#accueil" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.home">Accueil</a>
+                <a href="#produits" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.products">Produits</a>
+                <a href="#boutique" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.shop">Boutique</a>
+                <a href="#restaurant" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.restaurant">Restaurant</a>
+                <a href="#champ" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.farm">Champ Bio</a>
+                <a href="#avis" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.reviews">Avis Clients</a>
+                <a href="#apropos" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.about">À Propos</a>
+                <a href="#contact" class="text-gray-700 hover:text-green-700 font-medium" data-key="nav.contact">Contact</a>
             </div>
         </div>
     </header>
@@ -85,11 +301,25 @@
     <!-- Hero Section -->
     <section id="accueil" class="hero min-h-screen flex items-center justify-center text-center text-white py-20">
         <div class="container mx-auto px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Découvrez les Trésors Naturels de Côte d'Ivoire</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Des produits 100% naturels, issus de notre terre généreuse, pour votre bien-être au quotidien.</p>
+            <!-- Slider -->
+            <div class="slider mb-10">
+                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 font-elegant" data-key="home.title">De Tiébissou à toute la Côte d'Ivoire, le bio à votre table</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto" data-key="home.subtitle">Découvrez nos produits agricoles biologiques, notre boutique et notre restaurant aux saveurs authentiques.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#produits" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Nos Produits</a>
-                <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Contactez-nous</a>
+                <a href="#produits" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-key="home.cta.products">Nos Produits</a>
+                <a href="#boutique" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-key="home.cta.shop">Notre Boutique</a>
+                <a href="#restaurant" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-key="home.cta.restaurant">Réserver</a>
+                <a href="#champ" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-key="home.cta.discover">Découvrir</a>
             </div>
         </div>
     </section>
@@ -98,199 +328,491 @@
     <section id="produits" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nos Produits Naturels</h2>
-                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre sélection de produits naturels issus des richesses de la Côte d'Ivoire, cultivés et transformés avec soin.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-elegant" data-key="products.title">Nos Produits Bio</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="products.subtitle">Découvrez notre sélection de produits agricoles biologiques cultivés avec soin dans nos champs à Tiébissou.</p>
+            </div>
+            
+            <!-- Filtres de recherche -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn px-4 py-2 rounded-full bg-green-700 text-white font-medium" data-filter="all" data-key="products.filter.all">Tous</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-green-100 hover:text-green-700 transition" data-filter="legumes" data-key="products.filter.vegetables">Légumes</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-green-100 hover:text-green-700 transition" data-filter="fruits" data-key="products.filter.fruits">Fruits</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-green-100 hover:text-green-700 transition" data-filter="epices" data-key="products.filter.spices">Épices</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-green-100 hover:text-green-700 transition" data-filter="boissons" data-key="products.filter.drinks">Boissons</button>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Produit 1 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="legumes">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Huile de palmiste" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Légumes frais" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Huile de Palmiste</h3>
-                            <span class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full">Nouveau</span>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item1.title">Légumes Frais</h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.bio">Bio</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Huile naturelle extraite à froid, riche en vitamines et acides gras essentiels pour la peau et les cheveux.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item1.description">Une sélection de légumes de saison cultivés sans pesticides ni produits chimiques.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">5 000 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item1.price">À partir de 1 500 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Produit 2 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="fruits">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Poudre de Baobab" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fruits de saison" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Poudre de Baobab</h3>
-                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Populaire</span>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item2.title">Fruits de Saison</h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.bio">Bio</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Riche en vitamine C et antioxydants, idéale pour booster votre système immunitaire et votre énergie.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item2.description">Mangues, ananas, bananes et autres fruits cultivés naturellement dans nos champs.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">7 500 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item2.price">À partir de 2 000 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Produit 3 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="epices">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Beurre de Karité" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1596040033221-a1b4e11c8cc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Épices locales" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Beurre de Karité</h3>
-                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Best-seller</span>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item3.title">Épices Locales</h3>
+                            <span class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.popular">Populaire</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Pur et non raffiné, excellent pour hydrater la peau, prévenir les vergetures et soigner les cheveux secs.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item3.description">Piments, gingembre, curcuma et autres épices pour relever vos plats.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">6 000 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item3.price">À partir de 1 000 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Produit 4 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="boissons">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Miel Sauvage" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jus naturels" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Miel Sauvage</h3>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item4.title">Jus Naturels</h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.bio">Bio</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Miel 100% naturel récolté dans les forêts ivoiriennes, aux propriétés antibactériennes et cicatrisantes.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item4.description">Jus de bissap, gingembre, baobab et autres boissons artisanales sans conservateurs.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">8 000 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item4.price">À partir de 1 500 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Produit 5 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="legumes">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Gingembre en Poudre" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salades fraîches" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Gingembre en Poudre</h3>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item5.title">Salades Fraîches</h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.bio">Bio</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Stimulant naturel, aide à la digestion et renforce le système immunitaire. Idéal pour infusions et cuisine.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item5.description">Laitue, chou, tomates et autres ingrédients pour vos salades quotidiennes.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">4 500 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item5.price">À partir de 1 200 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Produit 6 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-category="epices">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Noix de Kola" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Huiles naturelles" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Noix de Kola</h3>
+                            <h3 class="text-xl font-bold text-gray-800" data-key="products.item6.title">Huiles Naturelles</h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full" data-key="products.badge.bestseller">Best-seller</span>
                         </div>
-                        <p class="text-gray-600 mb-4">Stimulant naturel riche en caféine, traditionnellement utilisé pour ses propriétés énergisantes et médicinales.</p>
+                        <p class="text-gray-600 mb-4" data-key="products.item6.description">Huile de palme rouge, huile de coco et autres huiles pressées à froid.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-amber-600 font-bold text-xl">3 500 FCFA</span>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Commander
+                            <span class="text-green-700 font-bold text-xl" data-key="products.item6.price">À partir de 3 500 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="products.cta.order">Commander</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section Boutique -->
+    <section id="boutique" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-elegant" data-key="shop.title">Notre Boutique</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="shop.subtitle">Découvrez notre espace boutique avec une large sélection de produits africains, ivoiriens et importés.</p>
+            </div>
+            
+            <!-- Galerie de la boutique -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Produit boutique 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Épices africaines" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3" data-key="shop.product1.title">Épices Africaines Authentiques</h3>
+                        <p class="text-gray-600 mb-4" data-key="shop.product1.description">Une sélection d'épices traditionnelles africaines pour rehausser vos plats.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-700 font-bold text-xl" data-key="shop.product1.price">À partir de 2 500 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="shop.cta.add">Ajouter</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit boutique 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576097449790-4d4c1506d7b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boissons locales" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3" data-key="shop.product2.title">Boissons Locales & Importées</h3>
+                        <p class="text-gray-600 mb-4" data-key="shop.product2.description">Découvrez nos jus traditionnels, vins et autres boissons de qualité.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-700 font-bold text-xl" data-key="shop.product2.price">À partir de 1 800 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="shop.cta.add">Ajouter</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit boutique 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisanat local" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3" data-key="shop.product3.title">Artisanat Local</h3>
+                        <p class="text-gray-600 mb-4" data-key="shop.product3.description">Objets artisanaux fabriqués par des artisans ivoiriens.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-700 font-bold text-xl" data-key="shop.product3.price">À partir de 5 000 FCFA</span>
+                            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i><span data-key="shop.cta.add">Ajouter</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="#contact" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                    Voir tous nos produits <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- À Propos Section -->
-    <section id="apropos" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-                    <img src="https://images.unsplash.com/photo-1519735771060-453c1a27a5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="À propos de BON SWVI" class="rounded-lg shadow-xl w-full">
+            <!-- Galerie d'images supplémentaires -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-key="shop.gallery.title">Galerie de Notre Boutique</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="rounded-lg overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Artisanat africain" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Épices colorées" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1576097449790-4d4c1506d7b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Boissons exotiques" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Produits frais" class="w-full h-full object-cover">
+                    </div>
                 </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Notre Engagement pour la Nature</h2>
-                    <div class="w-20 h-1 bg-amber-500 mb-6"></div>
-                    <p class="text-gray-600 mb-6">Fondée en 2015, BON SWVI s'engage à promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.</p>
+            </div>
+            
+            <!-- Informations sur la boutique -->
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4" data-key="shop.about.title">À Propos de Notre Boutique</h3>
+                <p class="text-gray-600 mb-6" data-key="shop.about.description">Notre boutique vous propose une sélection unique de produits africains et ivoiriens soigneusement choisis. Des épices authentiques aux boissons traditionnelles, en passant par l'artisanat local, nous mettons à votre disposition des produits de qualité qui reflètent la richesse de notre culture.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shipping-fast text-green-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2" data-key="shop.features.delivery.title">Livraison Rapide</h4>
+                        <p class="text-gray-600" data-key="shop.features.delivery.description">Livraison dans toute la Côte d'Ivoire sous 48h</p>
+                    </div>
                     
-                    <div class="space-y-6">
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-                                    <i class="fas fa-leaf text-amber-600"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Produits 100% Naturels</h3>
-                                <p class="text-gray-600">Tous nos produits sont issus de l'agriculture biologique, sans additifs ni conservateurs chimiques.</p>
-                            </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-award text-green-700 text-2xl"></i>
                         </div>
-                        
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-                                    <i class="fas fa-hands-helping text-amber-600"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Commerce Équitable</h3>
-                                <p class="text-gray-600">Nous travaillons directement avec les producteurs locaux pour assurer des revenus justes et durables.</p>
-                            </div>
+                        <h4 class="font-bold text-gray-800 mb-2" data-key="shop.features.quality.title">Qualité Garantie</h4>
+                        <p class="text-gray-600" data-key="shop.features.quality.description">Tous nos produits sont sélectionnés avec soin</p>
+                    </div>
+                    
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-headset text-green-700 text-2xl"></i>
                         </div>
-                        
-                        <div class="flex">
-                            <div class="flex-shrink-0 mt-1">
-                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-                                    <i class="fas fa-recycle text-amber-600"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-800">Emballages Écologiques</h3>
-                                <p class="text-gray-600">Nous utilisons des matériaux biodégradables ou recyclables pour minimiser notre impact environnemental.</p>
-                            </div>
-                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2" data-key="shop.features.service.title">Service Client</h4>
+                        <p class="text-gray-600" data-key="shop.features.service.description">Une équipe à votre écoute pour vos questions</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Témoignages Section -->
-    <section id="temoignages" class="py-20 bg-white">
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Ce Que Disent Nos Clients</h2>
-                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez les expériences de ceux qui ont déjà essayé nos produits naturels.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-elegant" data-key="restaurant.title">Notre Restaurant</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="restaurant.subtitle">Dégustez des plats préparés avec nos produits bio, dans une ambiance chaleureuse et hygiénique.</p>
+            </div>
+            
+            <!-- Galerie du restaurant avec images ivoiriennes -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-key="restaurant.gallery.title">Galerie de Notre Restaurant</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1556909115-6ba609c3f0c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Intérieur du restaurant" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plats ivoiriens" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuisine traditionnelle" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autres éléments de la section restaurant restent inchangés -->
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6" data-key="restaurant.menu.title">Notre Menu</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="menu-category pl-4">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-key="restaurant.menu.ivoirian">Plats Ivoiriens</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.attieke">Attiéké avec Poisson Grillè</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.attieke_desc">Semoule de manioc accompagnée de poisson braisé et de sauce tomate.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.attieke_price">4 500 FCFA</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.kedjenou">Kédjénou de Poulet</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.kedjenou_desc">Poulet cuit à l'étouffée avec des légumes et des épices locales.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.kedjenou_price">5 000 FCFA</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.garba">Garba</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.garba_desc">Thon frit avec de l'attiéké, un plat populaire ivoirien.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.garba_price">3 500 FCFA</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-category pl-4">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-key="restaurant.menu.african">Plats Africains</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.thieb">Thiébou Dieune</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.thieb_desc">Riz au poisson, plat traditionnel sénégalais.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.thieb_price">5 500 FCFA</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.mafe">Mafé</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.mafe_desc">Ragoût de viande dans une sauce à l'arachide.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.mafe_price">5 000 FCFA</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-category pl-4">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-key="restaurant.menu.european">Plats Européens</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.salad">Salade César Bio</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.salad_desc">Laitue, croûtons, parmesan et sauce césar maison.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.salad_price">4 000 FCFA</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800" data-key="restaurant.menu.pasta">Pâtes Fraîches aux Légumes</h5>
+                                <p class="text-gray-600" data-key="restaurant.menu.pasta_desc">Pâtes artisanales avec des légumes de saison sautés.</p>
+                                <span class="text-green-700 font-bold" data-key="restaurant.menu.pasta_price">4 500 FCFA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulaire de réservation -->
+                <div class="bg-green-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6" data-key="restaurant.reservation.title">Réserver une Table</h3>
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.name">Votre Nom</label>
+                            <input type="text" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.email">Votre Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.phone">Téléphone</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.date">Date</label>
+                            <input type="date" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.time">Heure</label>
+                            <input type="time" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.guests">Nombre de Personnes</label>
+                            <select class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input">
+                                <option data-key="restaurant.reservation.guests.1">1 personne</option>
+                                <option data-key="restaurant.reservation.guests.2">2 personnes</option>
+                                <option data-key="restaurant.reservation.guests.3">3 personnes</option>
+                                <option data-key="restaurant.reservation.guests.4">4 personnes</option>
+                                <option data-key="restaurant.reservation.guests.5">5 personnes</option>
+                                <option data-key="restaurant.reservation.guests.6">6+ personnes</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block mb-2 font-medium text-gray-700" data-key="restaurant.reservation.notes">Notes Spéciales</label>
+                            <textarea rows="3" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 form-input"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button type="submit" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full md:w-auto">
+                                <span data-key="restaurant.reservation.cta">Réserver Maintenant</span> <i class="fas fa-calendar-check ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Champ Bio Section -->
+    <section id="champ" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-elegant" data-key="farm.title">Notre Champ Bio</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="farm.subtitle">Découvrez notre domaine agricole où nous cultivons des produits sains et naturels dans le respect de l'environnement.</p>
+            </div>
+            
+            <!-- Galerie du champ bio avec images de champs africains -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-key="farm.gallery.title">Galerie de Notre Champ</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Champ bio africain" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Agriculture biologique" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Produits agricoles frais" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autres éléments de la section champ bio restent inchangés -->
+            <div class="bg-green-50 p-8 rounded-lg shadow-md mb-16">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6" data-key="farm.practices.title">Nos Pratiques Écologiques</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-leaf text-green-700 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-800" data-key="farm.practices.organic">Agriculture Biologique</h4>
+                            <p class="text-gray-600" data-key="farm.practices.organic_desc">Nous n'utilisons ni pesticides ni engrais chimiques, privilégiant des méthodes naturelles pour enrichir nos sols.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-tint text-green-700 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-800" data-key="farm.practices.water">Gestion de l'Eau</h4>
+                            <p class="text-gray-600" data-key="farm.practices.water_desc">Système d'irrigation goutte-à-goutte pour économiser l'eau et arroser efficacement nos cultures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-recycle text-green-700 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-800" data-key="farm.practices.compost">Compostage</h4>
+                            <p class="text-gray-600" data-key="farm.practices.compost_desc">Nous transformons nos déchets végétaux en compost naturel pour fertiliser nos terres.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-seedling text-green-700 text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-800" data-key="farm.practices.biodiversity">Biodiversité</h4>
+                            <p class="text-gray-600" data-key="farm.practices.biodiversity_desc">Nous préservons la biodiversité en cultivant différentes espèces et en maintenant des zones naturelles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section vidéo -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6" data-key="farm.video.title">Visite de Notre Champ</h3>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <p class="text-gray-500" data-key="farm.video.placeholder">Vidéo de présentation de notre champ bio (à intégrer)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis Clients Section -->
+    <section id="avis" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-key="reviews.title">Ce Que Disent Nos Clients</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="reviews.subtitle">Découvrez les expériences de ceux qui ont déjà essayé nos produits naturels.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -311,7 +833,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"Le beurre de karité de BON SWVI a complètement transformé ma routine capillaire. Mes cheveux sont plus forts et plus brillants que jamais. Je recommande vivement!"</p>
+                    <p class="text-gray-600 italic" data-key="reviews.testimonial1">"Le beurre de karité de Bonswi a complètement transformé ma routine capillaire. Mes cheveux sont plus forts et plus brillants que jamais. Je recommande vivement!"</p>
                 </div>
                 
                 <!-- Témoignage 2 -->
@@ -331,7 +853,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"La poudre de baobab est devenue un indispensable de mon petit-déjeuner. Un vrai boost d'énergie naturelle pour bien commencer la journée. Qualité exceptionnelle!"</p>
+                    <p class="text-gray-600 italic" data-key="reviews.testimonial2">"La poudre de baobab est devenue un indispensable de mon petit-déjeuner. Un vrai boost d'énergie naturelle pour bien commencer la journée. Qualité exceptionnelle!"</p>
                 </div>
                 
                 <!-- Témoignage 3 -->
@@ -351,7 +873,61 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"J'ai essayé plusieurs produits BON SWVI et je suis impressionnée par leur qualité. Le service client est également très réactif et professionnel. Je suis une cliente fidèle!"</p>
+                    <p class="text-gray-600 italic" data-key="reviews.testimonial3">"J'ai essayé plusieurs produits Bonswi et je suis impressionnée par leur qualité. Le service client est également très réactif et professionnel. Je suis une cliente fidèle!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos Section -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <img src="https://images.unsplash.com/photo-1519735771060-453c1a27a5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="À propos de Bonswi" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6" data-key="about.commitment.title">Notre Engagement pour la Nature</h2>
+                    <div class="w-20 h-1 bg-green-700 mb-6"></div>
+                    <p class="text-gray-600 mb-6" data-key="about.commitment.description">Fondée en 2020, Bonswi s'engage à promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-leaf text-green-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800" data-key="about.commitment.feature1.title">Produits 100% Naturels</h3>
+                                <p class="text-gray-600" data-key="about.commitment.feature1.description">Tous nos produits sont issus de l'agriculture biologique, sans additifs ni conservateurs chimiques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-hands-helping text-green-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800" data-key="about.commitment.feature2.title">Commerce Équitable</h3>
+                                <p class="text-gray-600" data-key="about.commitment.feature2.description">Nous travaillons directement avec les producteurs locaux pour assurer des revenus justes et durables.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-recycle text-green-700"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-800" data-key="about.commitment.feature3.title">Emballages Écologiques</h3>
+                                <p class="text-gray-600" data-key="about.commitment.feature3.description">Nous utilisons des matériaux biodégradables ou recyclables pour minimiser notre impact environnemental.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -361,99 +937,113 @@
     <section id="contact" class="py-20 bg-gray-800 text-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactez-Nous</h2>
-                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
-                <p class="max-w-2xl mx-auto opacity-90">Nous sommes à votre disposition pour répondre à toutes vos questions sur nos produits naturels.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-elegant" data-key="contact.title">Contactez-Nous</h2>
+                <div class="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto opacity-90" data-key="contact.subtitle">Nous sommes à votre disposition pour répondre à toutes vos questions sur nos produits, notre restaurant ou nos activités.</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10">
                 <div class="lg:w-1/2">
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="https://formspree.io/f/mpzvzpyj" method="POST">
                         <div>
-                            <label for="name" class="block mb-2 font-medium">Votre Nom</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <label for="name" class="block mb-2 font-medium" data-key="contact.form.name">Votre Nom</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 form-input" required>
                         </div>
                         
                         <div>
-                            <label for="email" class="block mb-2 font-medium">Votre Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <label for="email" class="block mb-2 font-medium" data-key="contact.form.email">Votre Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 form-input" required>
                         </div>
                         
                         <div>
-                            <label for="subject" class="block mb-2 font-medium">Sujet</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <label for="subject" class="block mb-2 font-medium" data-key="contact.form.subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 form-input" required>
                         </div>
                         
                         <div>
-                            <label for="message" class="block mb-2 font-medium">Votre Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                            <label for="message" class="block mb-2 font-medium" data-key="contact.form.message">Votre Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 form-input" required></textarea>
                         </div>
                         
-                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full md:w-auto">
-                            Envoyer le Message <i class="fas fa-paper-plane ml-2"></i>
+                        <button type="submit" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full md:w-auto">
+                            <span data-key="contact.form.cta">Envoyer le Message</span> <i class="fas fa-paper-plane ml-2"></i>
                         </button>
                     </form>
                 </div>
                 
                 <div class="lg:w-1/2 lg:pl-10">
                     <div class="bg-gray-700 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-6">Informations de Contact</h3>
+                        <h3 class="text-2xl font-bold mb-6" data-key="contact.info.title">Informations de Contact</h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-map-marker-alt text-amber-500 text-xl"></i>
+                                    <i class="fas fa-map-marker-alt text-green-500 text-xl"></i>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="font-bold">Adresse</h4>
-                                    <p class="text-gray-300">Rue des Commerçants, Abidjan<br>Côte d'Ivoire</p>
+                                    <h4 class="font-bold" data-key="contact.info.address">Adresse</h4>
+                                    <p class="text-gray-300">Tiébissou, Côte d'Ivoire</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-phone-alt text-amber-500 text-xl"></i>
+                                    <i class="fas fa-phone-alt text-green-500 text-xl"></i>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="font-bold">Téléphone</h4>
+                                    <h4 class="font-bold" data-key="contact.info.phone">Téléphone</h4>
                                     <p class="text-gray-300">+225 05 94 76 64 41</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-envelope text-amber-500 text-xl"></i>
+                                    <i class="fas fa-envelope text-green-500 text-xl"></i>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="font-bold">Email</h4>
-                                    <p class="text-gray-300">contact@bonswvi.com</p>
+                                    <h4 class="font-bold" data-key="contact.info.email">Email</h4>
+                                    <p class="text-gray-300">contact@bonswi.com</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 mt-1">
-                                    <i class="fas fa-clock text-amber-500 text-xl"></i>
+                                    <i class="fas fa-clock text-green-500 text-xl"></i>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="font-bold">Heures d'Ouverture</h4>
-                                    <p class="text-gray-300">Lundi - Vendredi: 8h - 18h<br>Samedi: 9h - 14h</p>
+                                    <h4 class="font-bold" data-key="contact.info.hours">Heures d'Ouverture</h4>
+                                    <p class="text-gray-300" data-key="contact.info.hours.detail">Lundi - Dimanche: 8h - 22h</p>
                                 </div>
                             </div>
                         </div>
                         
+                        <!-- Carte Google Maps -->
                         <div class="mt-8">
-                            <h4 class="font-bold mb-4">Suivez-Nous</h4>
+                            <h4 class="font-bold mb-4" data-key="contact.info.map">Notre Localisation</h4>
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1272560.1291182004!2d-6.201661949999999!3d7.15707195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb93c71bb321a5%3A0x6e303cd4306a0174!2sTi%C3%A9bissou%2C%20C%C3%B4te%20d'Ivoire!5e0!3m2!1sfr!2sfr!4v1718900000000!5m2!1sfr!2sfr" 
+                                width="100%" 
+                                height="256" 
+                                style="border:0; border-radius: 8px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4" data-key="contact.info.social">Suivez-Nous</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-green-700 flex items-center justify-center transition duration-300">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-green-700 flex items-center justify-center transition duration-300">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-green-700 flex items-center justify-center transition duration-300">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-amber-500 flex items-center justify-center transition duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-600 hover:bg-green-700 flex items-center justify-center transition duration-300">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
@@ -470,42 +1060,42 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center mr-3">
+                        <div class="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center mr-3">
                             <i class="fas fa-leaf text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold">BON SWVI</h3>
+                        <h3 class="text-xl font-bold font-elegant">Bonswi</h3>
                     </div>
-                    <p class="text-gray-400">Promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.</p>
+                    <p class="text-gray-400" data-key="footer.description">Promouvoir une alimentation saine et durable de Tiébissou à toute la Côte d'Ivoire.</p>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Liens Rapides</h4>
+                    <h4 class="text-lg font-bold mb-4" data-key="footer.links">Liens Rapides</h4>
                     <ul class="space-y-2">
-                        <li><a href="#accueil" class="text-gray-400 hover:text-amber-500 transition duration-300">Accueil</a></li>
-                        <li><a href="#produits" class="text-gray-400 hover:text-amber-500 transition duration-300">Nos Produits</a></li>
-                        <li><a href="#apropos" class="text-gray-400 hover:text-amber-500 transition duration-300">À Propos</a></li>
-                        <li><a href="#temoignages" class="text-gray-400 hover:text-amber-500 transition duration-300">Témoignages</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-amber-500 transition duration-300">Contact</a></li>
+                        <li><a href="#accueil" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.home">Accueil</a></li>
+                        <li><a href="#produits" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.products">Produits</a></li>
+                        <li><a href="#boutique" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.shop">Boutique</a></li>
+                        <li><a href="#restaurant" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.restaurant">Restaurant</a></li>
+                        <li><a href="#apropos" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.about">À Propos</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="nav.contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Produits</h4>
+                    <h4 class="text-lg font-bold mb-4" data-key="footer.products">Produits</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Huile de Palmiste</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Beurre de Karité</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Poudre de Baobab</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Miel Sauvage</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Noix de Kola</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="products.filter.vegetables">Légumes Bio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="products.filter.fruits">Fruits de Saison</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="products.filter.spices">Épices Locales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="products.filter.drinks">Boissons Artisanales</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Abonnez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.</p>
+                    <h4 class="text-lg font-bold mb-4" data-key="footer.newsletter">Newsletter</h4>
+                    <p class="text-gray-400 mb-4" data-key="footer.newsletter.desc">Abonnez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.</p>
                     <form class="flex">
-                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l focus:outline-none text-gray-800 w-full">
-                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-r">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l focus:outline-none text-gray-800 w-full" data-key="footer.newsletter.placeholder">
+                        <button type="submit" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-r transition duration-300">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
@@ -513,54 +1103,580 @@
             </div>
             
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2023 BON SWVI. Tous droits réservés.</p>
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Bonswi. <span data-key="footer.rights">Tous droits réservés.</span></p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Conditions d'utilisation</a>
-                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="footer.terms">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition duration-300" data-key="footer.privacy">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Traductions
+        const translations = {
+            fr: {
+                // Navigation
+                "nav.home": "Accueil",
+                "nav.products": "Produits",
+                "nav.shop": "Boutique",
+                "nav.restaurant": "Restaurant",
+                "nav.farm": "Champ Bio",
+                "nav.reviews": "Avis Clients",
+                "nav.about": "À Propos",
+                "nav.contact": "Contact",
                 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                // Accueil
+                "home.title": "De Tiébissou à toute la Côte d'Ivoire, le bio à votre table",
+                "home.subtitle": "Découvrez nos produits agricoles biologiques, notre boutique et notre restaurant aux saveurs authentiques.",
+                "home.cta.products": "Nos Produits",
+                "home.cta.shop": "Notre Boutique",
+                "home.cta.restaurant": "Réserver",
+                "home.cta.discover": "Découvrir",
                 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                // Produits
+                "products.title": "Nos Produits Bio",
+                "products.subtitle": "Découvrez notre sélection de produits agricoles biologiques cultivés avec soin dans nos champs à Tiébissou.",
+                "products.filter.all": "Tous",
+                "products.filter.vegetables": "Légumes",
+                "products.filter.fruits": "Fruits",
+                "products.filter.spices": "Épices",
+                "products.filter.drinks": "Boissons",
+                "products.badge.bio": "Bio",
+                "products.badge.popular": "Populaire",
+                "products.badge.bestseller": "Best-seller",
+                "products.cta.order": "Commander",
+                
+                // Détails des produits
+                "products.item1.title": "Légumes Frais",
+                "products.item1.description": "Une sélection de légumes de saison cultivés sans pesticides ni produits chimiques.",
+                "products.item2.title": "Fruits de Saison",
+                "products.item2.description": "Mangues, ananas, bananes et autres fruits cultivés naturellement dans nos champs.",
+                "products.item3.title": "Épices Locales",
+                "products.item3.description": "Piments, gingembre, curcuma et autres épices pour relever vos plats.",
+                "products.item4.title": "Jus Naturels",
+                "products.item4.description": "Jus de bissap, gingembre, baobab et autres boissons artisanales sans conservateurs.",
+                "products.item5.title": "Salades Fraîches",
+                "products.item5.description": "Laitue, chou, tomates et autres ingrédients pour vos salades quotidiennes.",
+                "products.item6.title": "Huiles Naturelles",
+                "products.item6.description": "Huile de palme rouge, huile de coco et autres huiles pressées à froid.",
+                
+                // Prix des produits
+                "products.item1.price": "À partir de 1 500 FCFA",
+                "products.item2.price": "À partir de 2 000 FCFA",
+                "products.item3.price": "À partir de 1 000 FCFA",
+                "products.item4.price": "À partir de 1 500 FCFA",
+                "products.item5.price": "À partir de 1 200 FCFA",
+                "products.item6.price": "À partir de 3 500 FCFA",
+                
+                // Boutique
+                "shop.title": "Notre Boutique",
+                "shop.subtitle": "Découvrez notre espace boutique avec une large sélection de produits africains, ivoiriens et importés.",
+                "shop.product1.title": "Épices Africaines Authentiques",
+                "shop.product1.description": "Une sélection d'épices traditionnelles africaines pour rehausser vos plats.",
+                "shop.product2.title": "Boissons Locales & Importées",
+                "shop.product2.description": "Découvrez nos jus traditionnels, vins et autres boissons de qualité.",
+                "shop.product3.title": "Artisanat Local",
+                "shop.product3.description": "Objets artisanaux fabriqués par des artisans ivoiriens.",
+                "shop.cta.add": "Ajouter",
+                "shop.gallery.title": "Galerie de Notre Boutique",
+                "shop.about.title": "À Propos de Notre Boutique",
+                "shop.about.description": "Notre boutique vous propose une sélection unique de produits africains et ivoiriens soigneusement choisis. Des épices authentiques aux boissons traditionnelles, en passant par l'artisanat local, nous mettons à votre disposition des produits de qualité qui reflètent la richesse de notre culture.",
+                "shop.features.delivery.title": "Livraison Rapide",
+                "shop.features.delivery.description": "Livraison dans toute la Côte d'Ivoire sous 48h",
+                "shop.features.quality.title": "Qualité Garantie",
+                "shop.features.quality.description": "Tous nos produits sont sélectionnés avec soin",
+                "shop.features.service.title": "Service Client",
+                "shop.features.service.description": "Une équipe à votre écoute pour vos questions",
+                
+                // Prix de la boutique
+                "shop.product1.price": "À partir de 2 500 FCFA",
+                "shop.product2.price": "À partir de 1 800 FCFA",
+                "shop.product3.price": "À partir de 5 000 FCFA",
+                
+                // Restaurant
+                "restaurant.title": "Notre Restaurant",
+                "restaurant.subtitle": "Dégustez des plats préparés avec nos produits bio, dans une ambiance chaleureuse et hygiénique.",
+                "restaurant.menu.title": "Notre Menu",
+                "restaurant.menu.ivoirian": "Plats Ivoiriens",
+                "restaurant.menu.african": "Plats Africains",
+                "restaurant.menu.european": "Plats Européens",
+                
+                "restaurant.menu.attieke": "Attiéké avec Poisson Grillè",
+                "restaurant.menu.attieke_desc": "Semoule de manioc accompagnée de poisson braisé et de sauce tomate.",
+                "restaurant.menu.kedjenou": "Kédjénou de Poulet",
+                "restaurant.menu.kedjenou_desc": "Poulet cuit à l'étouffée avec des légumes et des épices locales.",
+                "restaurant.menu.garba": "Garba",
+                "restaurant.menu.garba_desc": "Thon frit avec de l'attiéké, un plat populaire ivoirien.",
+                
+                "restaurant.menu.thieb": "Thiébou Dieune",
+                "restaurant.menu.thieb_desc": "Riz au poisson, plat traditionnel sénégalais.",
+                "restaurant.menu.mafe": "Mafé",
+                "restaurant.menu.mafe_desc": "Ragoût de viande dans une sauce à l'arachide.",
+                
+                "restaurant.menu.salad": "Salade César Bio",
+                "restaurant.menu.salad_desc": "Laitue, croûtons, parmesan et sauce césar maison.",
+                "restaurant.menu.pasta": "Pâtes Fraîches aux Légumes",
+                "restaurant.menu.pasta_desc": "Pâtes artisanales avec des légumes de saison sautés.",
+                
+                // Prix du restaurant
+                "restaurant.menu.attieke_price": "4 500 FCFA",
+                "restaurant.menu.kedjenou_price": "5 000 FCFA",
+                "restaurant.menu.garba_price": "3 500 FCFA",
+                "restaurant.menu.thieb_price": "5 500 FCFA",
+                "restaurant.menu.mafe_price": "5 000 FCFA",
+                "restaurant.menu.salad_price": "4 000 FCFA",
+                "restaurant.menu.pasta_price": "4 500 FCFA",
+                
+                "restaurant.reservation.title": "Réserver une Table",
+                "restaurant.reservation.name": "Votre Nom",
+                "restaurant.reservation.email": "Votre Email",
+                "restaurant.reservation.phone": "Téléphone",
+                "restaurant.reservation.date": "Date",
+                "restaurant.reservation.time": "Heure",
+                "restaurant.reservation.guests": "Nombre de Personnes",
+                "restaurant.reservation.guests.1": "1 personne",
+                "restaurant.reservation.guests.2": "2 personnes",
+                "restaurant.reservation.guests.3": "3 personnes",
+                "restaurant.reservation.guests.4": "4 personnes",
+                "restaurant.reservation.guests.5": "5 personnes",
+                "restaurant.reservation.guests.6": "6+ personnes",
+                "restaurant.reservation.notes": "Notes Spéciales",
+                "restaurant.reservation.cta": "Réserver Maintenant",
+                
+                "restaurant.gallery.title": "Galerie de Notre Restaurant",
+                
+                // Champ Bio
+                "farm.title": "Notre Champ Bio",
+                "farm.subtitle": "Découvrez notre domaine agricole où nous cultivons des produits sains et naturels dans le respect de l'environnement.",
+                "farm.practices.title": "Nos Pratiques Écologiques",
+                
+                "farm.practices.organic": "Agriculture Biologique",
+                "farm.practices.organic_desc": "Nous n'utilisons ni pesticides ni engrais chimiques, privilégiant des méthodes naturelles pour enrichir nos sols.",
+                "farm.practices.water": "Gestion de l'Eau",
+                "farm.practices.water_desc": "Système d'irrigation goutte-à-goutte pour économiser l'eau et arroser efficacement nos cultures.",
+                "farm.practices.compost": "Compostage",
+                "farm.practices.compost_desc": "Nous transformons nos déchets végétaux en compost naturel pour fertiliser nos terres.",
+                "farm.practices.biodiversity": "Biodiversité",
+                "farm.practices.biodiversity_desc": "Nous préservons la biodiversité en cultivant différentes espèces et en maintenant des zones naturelles.",
+                
+                "farm.video.title": "Visite de Notre Champ",
+                "farm.video.placeholder": "Vidéo de présentation de notre champ bio (à intégrer)",
+                
+                "farm.gallery.title": "Galerie de Notre Champ",
+                
+                // Avis Clients
+                "reviews.title": "Ce Que Disent Nos Clients",
+                "reviews.subtitle": "Découvrez les expériences de ceux qui ont déjà essayé nos produits naturels.",
+                "reviews.testimonial1": "\"Le beurre de karité de Bonswi a complètement transformé ma routine capillaire. Mes cheveux sont plus forts et plus brillants que jamais. Je recommande vivement!\"",
+                "reviews.testimonial2": "\"La poudre de baobab est devenue un indispensable de mon petit-déjeuner. Un vrai boost d'énergie naturelle pour bien commencer la journée. Qualité exceptionnelle!\"",
+                "reviews.testimonial3": "\"J'ai essayé plusieurs produits Bonswi et je suis impressionnée par leur qualité. Le service client est également très réactif et professionnel. Je suis une cliente fidèle!\"",
+                
+                // À Propos
+                "about.commitment.title": "Notre Engagement pour la Nature",
+                "about.commitment.description": "Fondée en 2020, Bonswi s'engage à promouvoir les richesses naturelles de la Côte d'Ivoire tout en préservant notre environnement et en soutenant les communautés locales.",
+                "about.commitment.feature1.title": "Produits 100% Naturels",
+                "about.commitment.feature1.description": "Tous nos produits sont issus de l'agriculture biologique, sans additifs ni conservateurs chimiques.",
+                "about.commitment.feature2.title": "Commerce Équitable",
+                "about.commitment.feature2.description": "Nous travaillons directement avec les producteurs locaux pour assurer des revenus justes et durables.",
+                "about.commitment.feature3.title": "Emballages Écologiques",
+                "about.commitment.feature3.description": "Nous utilisons des matériaux biodégradables ou recyclables pour minimiser notre impact environnemental.",
+                
+                // Contact
+                "contact.title": "Contactez-Nous",
+                "contact.subtitle": "Nous sommes à votre disposition pour répondre à toutes vos questions sur nos produits, notre restaurant ou nos activités.",
+                
+                "contact.form.name": "Votre Nom",
+                "contact.form.email": "Votre Email",
+                "contact.form.subject": "Sujet",
+                "contact.form.message": "Votre Message",
+                "contact.form.cta": "Envoyer le Message",
+                
+                "contact.info.title": "Informations de Contact",
+                "contact.info.address": "Adresse",
+                "contact.info.phone": "Téléphone",
+                "contact.info.email": "Email",
+                "contact.info.hours": "Heures d'Ouverture",
+                "contact.info.hours.detail": "Lundi - Dimanche: 8h - 22h",
+                "contact.info.map": "Notre Localisation",
+                "contact.info.social": "Suivez-Nous",
+                
+                // Footer
+                "footer.description": "Promouvoir une alimentation saine et durable de Tiébissou à toute la Côte d'Ivoire.",
+                "footer.links": "Liens Rapides",
+                "footer.products": "Produits",
+                "footer.newsletter": "Newsletter",
+                "footer.newsletter.desc": "Abonnez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.",
+                "footer.newsletter.placeholder": "Votre email",
+                "footer.rights": "Tous droits réservés.",
+                "footer.terms": "Conditions d'utilisation",
+                "footer.privacy": "Politique de confidentialité"
+            },
+            en: {
+                // Navigation
+                "nav.home": "Home",
+                "nav.products": "Products",
+                "nav.shop": "Shop",
+                "nav.restaurant": "Restaurant",
+                "nav.farm": "Organic Farm",
+                "nav.reviews": "Customer Reviews",
+                "nav.about": "About Us",
+                "nav.contact": "Contact",
+                
+                // Home
+                "home.title": "From Tiébissou to all of Côte d'Ivoire, organic food at your table",
+                "home.subtitle": "Discover our organic agricultural products, our shop and our restaurant with authentic flavors.",
+                "home.cta.products": "Our Products",
+                "home.cta.shop": "Our Shop",
+                "home.cta.restaurant": "Book Now",
+                "home.cta.discover": "Discover",
+                
+                // Products
+                "products.title": "Our Organic Products",
+                "products.subtitle": "Discover our selection of organic agricultural products carefully grown in our fields in Tiébissou.",
+                "products.filter.all": "All",
+                "products.filter.vegetables": "Vegetables",
+                "products.filter.fruits": "Fruits",
+                "products.filter.spices": "Spices",
+                "products.filter.drinks": "Drinks",
+                "products.badge.bio": "Organic",
+                "products.badge.popular": "Popular",
+                "products.badge.bestseller": "Bestseller",
+                "products.cta.order": "Order",
+                
+                // Product details
+                "products.item1.title": "Fresh Vegetables",
+                "products.item1.description": "A selection of seasonal vegetables grown without pesticides or chemicals.",
+                "products.item2.title": "Seasonal Fruits",
+                "products.item2.description": "Mangoes, pineapples, bananas and other fruits naturally grown in our fields.",
+                "products.item3.title": "Local Spices",
+                "products.item3.description": "Peppers, ginger, turmeric and other spices to enhance your dishes.",
+                "products.item4.title": "Natural Juices",
+                "products.item4.description": "Hibiscus, ginger, baobab juices and other artisanal drinks without preservatives.",
+                "products.item5.title": "Fresh Salads",
+                "products.item5.description": "Lettuce, cabbage, tomatoes and other ingredients for your daily salads.",
+                "products.item6.title": "Natural Oils",
+                "products.item6.description": "Red palm oil, coconut oil and other cold-pressed oils.",
+                
+                // Product prices
+                "products.item1.price": "From 1 500 FCFA",
+                "products.item2.price": "From 2 000 FCFA",
+                "products.item3.price": "From 1 000 FCFA",
+                "products.item4.price": "From 1 500 FCFA",
+                "products.item5.price": "From 1 200 FCFA",
+                "products.item6.price": "From 3 500 FCFA",
+                
+                // Shop
+                "shop.title": "Our Shop",
+                "shop.subtitle": "Discover our shop with a wide selection of African, Ivorian and imported products.",
+                "shop.product1.title": "Authentic African Spices",
+                "shop.product1.description": "A selection of traditional African spices to enhance your dishes.",
+                "shop.product2.title": "Local & Imported Drinks",
+                "shop.product2.description": "Discover our traditional juices, wines and other quality beverages.",
+                "shop.product3.title": "Local Crafts",
+                "shop.product3.description": "Handcrafted items made by Ivorian artisans.",
+                "shop.cta.add": "Add to Cart",
+                "shop.gallery.title": "Our Shop Gallery",
+                "shop.about.title": "About Our Shop",
+                "shop.about.description": "Our shop offers you a unique selection of carefully chosen African and Ivorian products. From authentic spices to traditional drinks, and including local crafts, we provide you with quality products that reflect the richness of our culture.",
+                "shop.features.delivery.title": "Fast Delivery",
+                "shop.features.delivery.description": "Delivery throughout Côte d'Ivoire within 48 hours",
+                "shop.features.quality.title": "Quality Guaranteed",
+                "shop.features.quality.description": "All our products are carefully selected",
+                "shop.features.service.title": "Customer Service",
+                "shop.features.service.description": "A team available to answer your questions",
+                
+                // Shop prices
+                "shop.product1.price": "From 2 500 FCFA",
+                "shop.product2.price": "From 1 800 FCFA",
+                "shop.product3.price": "From 5 000 FCFA",
+                
+                // Restaurant
+                "restaurant.title": "Our Restaurant",
+                "restaurant.subtitle": "Enjoy dishes prepared with our organic products, in a warm and hygienic atmosphere.",
+                "restaurant.menu.title": "Our Menu",
+                "restaurant.menu.ivoirian": "Ivorian Dishes",
+                "restaurant.menu.african": "African Dishes",
+                "restaurant.menu.european": "European Dishes",
+                
+                "restaurant.menu.attieke": "Attiéké with Grilled Fish",
+                "restaurant.menu.attieke_desc": "Cassava semolina served with grilled fish and tomato sauce.",
+                "restaurant.menu.kedjenou": "Chicken Kédjénou",
+                "restaurant.menu.kedjenou_desc": "Chicken stewed with vegetables and local spices.",
+                "restaurant.menu.garba": "Garba",
+                "restaurant.menu.garba_desc": "Fried tuna with attiéké, a popular Ivorian dish.",
+                
+                "restaurant.menu.thieb": "Thiébou Dieune",
+                "restaurant.menu.thieb_desc": "Fish rice, traditional Senegalese dish.",
+                "restaurant.menu.mafe": "Mafé",
+                "restaurant.menu.mafe_desc": "Meat stew in peanut sauce.",
+                
+                "restaurant.menu.salad": "Organic Caesar Salad",
+                "restaurant.menu.salad_desc": "Lettuce, croutons, parmesan and homemade Caesar dressing.",
+                "restaurant.menu.pasta": "Fresh Pasta with Vegetables",
+                "restaurant.menu.pasta_desc": "Artisanal pasta with sautéed seasonal vegetables.",
+                
+                // Restaurant prices
+                "restaurant.menu.attieke_price": "4 500 FCFA",
+                "restaurant.menu.kedjenou_price": "5 000 FCFA",
+                "restaurant.menu.garba_price": "3 500 FCFA",
+                "restaurant.menu.thieb_price": "5 500 FCFA",
+                "restaurant.menu.mafe_price": "5 000 FCFA",
+                "restaurant.menu.salad_price": "4 000 FCFA",
+                "restaurant.menu.pasta_price": "4 500 FCFA",
+                
+                "restaurant.reservation.title": "Book a Table",
+                "restaurant.reservation.name": "Your Name",
+                "restaurant.reservation.email": "Your Email",
+                "restaurant.reservation.phone": "Phone",
+                "restaurant.reservation.date": "Date",
+                "restaurant.reservation.time": "Time",
+                "restaurant.reservation.guests": "Number of Guests",
+                "restaurant.reservation.guests.1": "1 person",
+                "restaurant.reservation.guests.2": "2 people",
+                "restaurant.reservation.guests.3": "3 people",
+                "restaurant.reservation.guests.4": "4 people",
+                "restaurant.reservation.guests.5": "5 people",
+                "restaurant.reservation.guests.6": "6+ people",
+                "restaurant.reservation.notes": "Special Notes",
+                "restaurant.reservation.cta": "Book Now",
+                
+                "restaurant.gallery.title": "Our Restaurant Gallery",
+                
+                // Organic Farm
+                "farm.title": "Our Organic Farm",
+                "farm.subtitle": "Discover our agricultural estate where we grow healthy and natural products while respecting the environment.",
+                "farm.practices.title": "Our Ecological Practices",
+                
+                "farm.practices.organic": "Organic Farming",
+                "farm.practices.organic_desc": "We use no pesticides or chemical fertilizers, preferring natural methods to enrich our soils.",
+                "farm.practices.water": "Water Management",
+                "farm.practices.water_desc": "Drip irrigation system to save water and effectively water our crops.",
+                "farm.practices.compost": "Composting",
+                "farm.practices.compost_desc": "We transform our plant waste into natural compost to fertilize our land.",
+                "farm.practices.biodiversity": "Biodiversity",
+                "farm.practices.biodiversity_desc": "We preserve biodiversity by growing different species and maintaining natural areas.",
+                
+                "farm.video.title": "Visit Our Farm",
+                "farm.video.placeholder": "Presentation video of our organic farm (to be integrated)",
+                
+                "farm.gallery.title": "Our Farm Gallery",
+                
+                // Customer Reviews
+                "reviews.title": "What Our Customers Say",
+                "reviews.subtitle": "Discover the experiences of those who have already tried our natural products.",
+                "reviews.testimonial1": "\"Bonswi's shea butter has completely transformed my hair routine. My hair is stronger and shinier than ever. I highly recommend!\"",
+                "reviews.testimonial2": "\"Baobab powder has become essential for my breakfast. A real natural energy boost to start the day well. Exceptional quality!\"",
+                "reviews.testimonial3": "\"I've tried several Bonswi products and I'm impressed by their quality. The customer service is also very responsive and professional. I'm a loyal customer!\"",
+                
+                // About Us
+                "about.commitment.title": "Our Commitment to Nature",
+                "about.commitment.description": "Founded in 2020, Bonswi is committed to promoting the natural riches of Côte d'Ivoire while preserving our environment and supporting local communities.",
+                "about.commitment.feature1.title": "100% Natural Products",
+                "about.commitment.feature1.description": "All our products come from organic farming, without chemical additives or preservatives.",
+                "about.commitment.feature2.title": "Fair Trade",
+                "about.commitment.feature2.description": "We work directly with local producers to ensure fair and sustainable incomes.",
+                "about.commitment.feature3.title": "Eco-Friendly Packaging",
+                "about.commitment.feature3.description": "We use biodegradable or recyclable materials to minimize our environmental impact.",
+                
+                // Contact
+                "contact.title": "Contact Us",
+                "contact.subtitle": "We are at your disposal to answer all your questions about our products, our restaurant or our activities.",
+                
+                "contact.form.name": "Your Name",
+                "contact.form.email": "Your Email",
+                "contact.form.subject": "Subject",
+                "contact.form.message": "Your Message",
+                "contact.form.cta": "Send Message",
+                
+                "contact.info.title": "Contact Information",
+                "contact.info.address": "Address",
+                "contact.info.phone": "Phone",
+                "contact.info.email": "Email",
+                "contact.info.hours": "Opening Hours",
+                "contact.info.hours.detail": "Monday - Sunday: 8am - 10pm",
+                "contact.info.map": "Our Location",
+                "contact.info.social": "Follow Us",
+                
+                // Footer
+                "footer.description": "Promoting healthy and sustainable food from Tiébissou to all of Côte d'Ivoire.",
+                "footer.links": "Quick Links",
+                "footer.products": "Products",
+                "footer.newsletter": "Newsletter",
+                "footer.newsletter.desc": "Subscribe to our newsletter to receive our special offers and news.",
+                "footer.newsletter.placeholder": "Your email",
+                "footer.rights": "All rights reserved.",
+                "footer.terms": "Terms of Use",
+                "footer.privacy": "Privacy Policy"
+            }
+        };
+
+        // Le reste du script JavaScript reste identique
+        // Gestion du changement de langue
+        document.addEventListener('DOMContentLoaded', function() {
+            // Définir la langue par défaut
+            let currentLang = localStorage.getItem('language') || 'fr';
+            updateLanguage(currentLang);
+            
+            // Écouter les clics sur les options de langue
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    updateLanguage(lang);
+                    localStorage.setItem('language', lang);
+                });
+            });
+            
+            // Fonction pour mettre à jour la langue
+            function updateLanguage(lang) {
+                // Mettre à jour l'affichage du sélecteur de langue
+                document.querySelectorAll('.language-switcher > div:first-child img').forEach(img => {
+                    if (lang === 'fr') {
+                        img.src = 'https://flagcdn.com/w40/fr.png';
+                        img.alt = 'Français';
+                        img.nextElementSibling.textContent = 'FR';
+                    } else {
+                        img.src = 'https://flagcdn.com/w40/gb.png';
+                        img.alt = 'English';
+                        img.nextElementSibling.textContent = 'EN';
                     }
+                });
+                
+                // Mettre à jour tous les éléments avec data-key
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[lang][key];
+                        } else if (element.tagName === 'OPTION') {
+                            element.textContent = translations[lang][key];
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+            }
+            
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+            
+            // Add shadow to header on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('shadow-lg');
                 }
             });
-        });
-        
-        // Add shadow to header on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.remove('shadow-lg');
+            
+            // Filtrage des produits
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Retirer la classe active de tous les boutons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-green-700', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    button.classList.remove('bg-gray-200', 'text-gray-700');
+                    button.classList.add('bg-green-700', 'text-white');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    productCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Système d'évaluation par étoiles
+            const stars = document.querySelectorAll('#rating-stars i');
+            const ratingValue = document.getElementById('rating-value');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-rating');
+                    ratingValue.value = rating;
+                    
+                    stars.forEach(s => {
+                        if (s.getAttribute('data-rating') <= rating) {
+                            s.classList.remove('far');
+                            s.classList.add('fas');
+                        } else {
+                            s.classList.remove('fas');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+            });
+            
+            // Slider automatique
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
             }
+            
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            // Changer de slide toutes les 5 secondes
+            setInterval(nextSlide, 5000);
+            
+            // Navigation par points
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
         });
     </script>
 </body>
