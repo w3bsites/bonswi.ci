@@ -1,8 +1,8 @@
-# # 🌱 Bonswi - Organic Products & Restaurant
+# # 🌱 Bon SWUI - Organic Products & Restaurant
 
 **De Tiébissou à toute la Côte d'Ivoire, le bio à votre table**
 
-Bonswi est une entreprise ivoirienne innovante qui promeut une alimentation saine et durable à travers ses produits agricoles biologiques, sa boutique en ligne et son restaurant.
+Bon SWUI est une entreprise ivoirienne innovante qui promeut une alimentation saine et durable à travers ses produits agricoles biologiques, sa boutique en ligne et son restaurant.
 
 ## ✨ À Propos
 
