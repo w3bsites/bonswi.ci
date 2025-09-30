@@ -2,11 +2,11 @@
 
 **De Tiébissou à toute la Côte d'Ivoire, le bio à votre table**
 
-Bon SWUI est une entreprise ivoirienne innovante qui promeut une alimentation saine et durable à travers ses produits agricoles biologiques, sa boutique en ligne et son restaurant.
+Bon Swui est une entreprise ivoirienne innovante qui promeut une alimentation saine et durable à travers ses produits agricoles biologiques, sa boutique en ligne et son restaurant.
 
 ## ✨ À Propos
 
-Fondée en 2020 à Tiébissou, Bonswi s'engage à :
+Fondée en 2020 à Tiébissou, Bon Swui s'engage à :
 - 🌿 Produire des aliments 100% biologiques sans pesticides ni produits chimiques
 - 🤝 Pratiquer le commerce équitable avec les producteurs locaux
 - ♻️ Utiliser des emballages écologiques et biodégradables
